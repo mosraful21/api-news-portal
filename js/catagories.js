@@ -7,11 +7,13 @@ const loadTitle = async() => {
 
 const displayTitles = (titles) => {
     const titleContainer = document.getElementById('title-container');
+    let i = 0;
     titles.forEach(title => {
-        const titleList = document.createElement('ul');
+        const titleList = document.createElement('div');
         titleList.innerHTML = `
-        <li style="list-style-type: none;"> <a class="text-decoration-none text-dark" href=""> ${title.category_name} </a> </li>
+        <a onclick="newsItems('${title.category_id}')" id="item-${i}" class="nav-link active mx-2" aria-current="page" href="#">${title.category_name}</a>
         `
+        i = i + 1;
         titleContainer.appendChild(titleList);
     })
 }

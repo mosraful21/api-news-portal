@@ -1,5 +1,5 @@
-const newsItems = async() => {
-    const url = `https://openapi.programming-hero.com/api/news/category/01`;
+const newsItems = async(category_id) => {
+    const url = `https://openapi.programming-hero.com/api/news/category/${category_id}`;
     const res = await fetch(url);
     const data = await res.json();
     displayNewsDetails(data.data);
@@ -8,7 +8,10 @@ const newsItems = async() => {
 
 const displayNewsDetails = (newses) => {
     const newsContainer = document.getElementById('news-container');
+    // newsContainer.textContent = '';
+    // let count = 0;
     newses.forEach(news => {
+        // count++;
         const newsDiv = document.createElement('div');
         newsDiv.classList.add('row');
         newsDiv.innerHTML = `
@@ -32,7 +35,14 @@ const displayNewsDetails = (newses) => {
         `
         newsContainer.appendChild(newsDiv);
     })
+
+    // const countField = document.getElementById('count-field');
+    // if(count !== 0){
+    //     countField.innerText = `${count} items found for the news feed`;
+    // }
+    // else{
+    //     countField.innerText = "No News found";
+    // }
    
 }
-
-newsItems();
+newsItems('01');

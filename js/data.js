@@ -23,9 +23,12 @@ const displayNewsDetails = (news) => {
                         <h2 class="card-title mb-3">${news.title}</h2>
                         <p class="card-text">${news.details.slice(0,200)}</p>
                         <div class="d-flex justify-content-between mt-5">
-                            <p class="d-flex flex-column"> ${news.author.name} <small class="text-muted">${news.author.published_date}</small></p>
+                            <div class="d-flex">
+                                <img style="width: 50px; height:50px" class="rounded-circle" src="${news.thumbnail_url}" alt="">
+                                <p class="d-flex flex-column mx-2"> ${news.author.name} <small class="text-muted">${news.author.published_date}</small></p>
+                            </div>
                             <p>${news.total_view}</p>
-                            <button type="button" class="btn btn-secondary">Show Details</button>
+                            <button href="#" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#newsDetailModal">Show details</button>
                         </div>
                     </div>
                 </div>

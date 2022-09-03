@@ -16,7 +16,7 @@ const displayNewsDetails = (news) => {
         newDetailsDiv.innerHTML = `
             <div class="row p-4 shadow p-3 mb-5 bg-body rounded">
                 <div class="col-md-3">
-                    <img src="${news.author.img}" class="img-fluid rounded" alt="...">
+                    <img src="${news.thumbnail_url}" class="img-fluid rounded" alt="...">
                 </div>
                 <div class="col-md-9">
                     <div class="card-body">
@@ -24,7 +24,7 @@ const displayNewsDetails = (news) => {
                         <p class="card-text text-muted">${news.details.slice(0,200)}</p>
                         <div class="d-flex justify-content-between mt-5">
                             <div class="d-flex">
-                                <img style="width: 50px; height:50px" class="rounded-circle" src="${news.thumbnail_url}" alt="">
+                                <img style="width: 50px; height:50px" class="rounded-circle" src="${news.author.img}" alt="">
                                 <p class="d-flex flex-column mx-2"> ${news.author.name} <small class="text-muted">${news.author.published_date}</small></p>
                             </div>
                             <p>${news.total_view}</p>

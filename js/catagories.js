@@ -10,7 +10,7 @@ const displayTitles = (titles) => {
     titles.forEach(title => {
         const titleList = document.createElement('ul');
         titleList.innerHTML = `
-        <li style="list-style-type: none">${title.category_name} </li>
+        <li style="list-style-type: none;"> <a class="text-decoration-none text-dark" href=""> ${title.category_name} </a> </li>
         `
         titleContainer.appendChild(titleList);
     })

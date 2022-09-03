@@ -7,6 +7,7 @@ const loadTitle = async() => {
 
 const displayTitles = (titles) => {
     const titleContainer = document.getElementById('title-container');
+    toggleSpinner(true);
     let i = 0;
     titles.forEach(title => {
         const titleList = document.createElement('div');
@@ -15,7 +16,19 @@ const displayTitles = (titles) => {
         `
         i = i + 1;
         titleContainer.appendChild(titleList);
-    })
+    });
+    // stop spinner
+    toggleSpinner(false);
+}
+
+const toggleSpinner = (isLoading) => {
+    const loaderSection = document.getElementById('loader');
+    if(isLoading){
+        loaderSection.classList.remove("d-none");
+    }
+    else{
+        loaderSection.classList.add('d-none');
+    }
 }
 
 loadTitle();

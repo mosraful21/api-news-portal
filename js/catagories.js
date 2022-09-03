@@ -1,13 +1,17 @@
 const loadTitle = async() => {
     const url = `https://openapi.programming-hero.com/api/news/categories`;
-    const res = await fetch(url);
-    const data = await res.json();
-    displayTitles(data.data.news_category);
+    try{
+        const res = await fetch(url);
+        const data = await res.json();
+        displayTitles(data.data.news_category);
+    }
+    catch(error){
+        console.log(error);
+    }
 }
 
 const displayTitles = (titles) => {
     const titleContainer = document.getElementById('title-container');
-    toggleSpinner(true);
     let i = 0;
     titles.forEach(title => {
         const titleList = document.createElement('div');
@@ -18,17 +22,9 @@ const displayTitles = (titles) => {
         titleContainer.appendChild(titleList);
     });
     // stop spinner
-    toggleSpinner(false);
+    
 }
 
-const toggleSpinner = (isLoading) => {
-    const loaderSection = document.getElementById('loader');
-    if(isLoading){
-        loaderSection.classList.remove("d-none");
-    }
-    else{
-        loaderSection.classList.add('d-none');
-    }
-}
+
 
 loadTitle();

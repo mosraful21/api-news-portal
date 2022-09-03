@@ -4,6 +4,7 @@ const newsItems = async(category_id) => {
     const res = await fetch(url);
     const data = await res.json();
     displayNewsDetails(data.data);
+    console.log(data.data);
 }
 
 const displayNewsDetails = (news) => {
@@ -21,14 +22,14 @@ const displayNewsDetails = (news) => {
                 <div class="col-md-9">
                     <div class="card-body">
                         <h2 class="card-title mb-3">${news.title}</h2>
-                        <p class="card-text">${news.details.slice(0,200)}</p>
+                        <p class="card-text text-muted">${news.details.slice(0,200)}</p>
                         <div class="d-flex justify-content-between mt-5">
                             <div class="d-flex">
                                 <img style="width: 50px; height:50px" class="rounded-circle" src="${news.thumbnail_url}" alt="">
                                 <p class="d-flex flex-column mx-2"> ${news.author.name} <small class="text-muted">${news.author.published_date}</small></p>
                             </div>
                             <p>${news.total_view}</p>
-                            <button href="#" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#newsDetailModal">Show details</button>
+                            <button onclick="newsItems('${news.category_id}')" href="#" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#newsDetailModal">Show details</button>
                         </div>
                     </div>
                 </div>
@@ -44,5 +45,4 @@ const displayNewsDetails = (news) => {
     else {
         countField.innerText = `No News Found`
     }
-    console.log(count);
 }
